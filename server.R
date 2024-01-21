@@ -651,6 +651,14 @@ server <- function(input, output, session) {
       labs(x = "Course", y = "Earnings", title = "Earnings Across Courses")
   })
   
+  output$overall_students_plot <- renderPlot({
+    student_data$data %>% left_join(courses_data$data, by = c("course_id" = "id")) %>% 
+      group_by(course)  %>% summarise(n = n_distinct(stu_internal_id)) %>%
+      ggplot(aes(x = course, y = n, fill = course, group = course)) + geom_col() +
+      theme_bw() + scale_colour_viridis_d() + theme(plot.title = element_text(hjust = 0.5)) +
+      labs(x = "Course", y = "Number of Students", title = "Students per course")
+  })
+  
   
   # Saves:
   # Observer for exporting to CSV

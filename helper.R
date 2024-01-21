@@ -90,4 +90,5 @@ tags_head <- tags$head(
                  display: none;
                }"
   )
+  
 )

@@ -55,8 +55,10 @@ course_page <- fluidPage(
       actionButton("telegram_button", "Open Telegram"),
       actionButton("gdrive_button", "Open Google Drive"),
       h3("Student List"),
-      fileInput('upload_file', 'Upload CSV File',
-                accept=c('.csv')),
+      tags$div(title="Uplaod CSV Data in Format shown Below",
+               fileInput('upload_file', 'Upload CSV File',
+                         accept=c('.csv'))
+      ),
       hr(),
       DTOutput("student_table"),
       br(),
@@ -76,14 +78,25 @@ course_page <- fluidPage(
   )
 )
 
-analytics_page <- fluidPage(fluidRow(
-  h3("Attendance Analytics"),
-  plotOutput("overall_attendance_plot")
-),
-fluidRow(
-  h3("Claims Analytics"),
-  plotOutput("overall_claims_plot")
-))
+analytics_page <- fluidPage(
+  fluidRow(
+    h3("Attendance Analytics"),
+    plotOutput("overall_attendance_plot")
+    ),
+  fluidRow(
+    column(
+      h3("Claims Analytics"),
+      plotOutput("overall_claims_plot"),
+      width = 6
+      ),
+    column(
+      h3("Student Analytics"),
+      plotOutput("overall_students_plot"),
+      width = 6
+    )
+    
+    )
+  )
 
 ui <- fluidPage(
   shinyjs::useShinyjs(),
