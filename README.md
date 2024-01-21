@@ -52,8 +52,9 @@ Harness the potential of a structured workflow by managing claims for various ta
 ![Claims Management](images/claims.png)
 
 ### 6. Analytics
-Elevate your insights game with analytics that not only unravel attendance patterns and claims but also present them in captivating visualizations powered by ggplot.
-![Analytics](images/analytics.png)
+Elevate your insights game with analytics that not only unravel attendance patterns and claims but also present them in captivating visualizations powered by ggplot for specfic courses as well as across all courses.
+![Analytics (Course)](images/analytics.png)
+![Analytics (Overall)](images/analytics_page.png)
 
 
 ## Required Packages

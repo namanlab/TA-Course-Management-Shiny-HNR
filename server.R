@@ -628,6 +628,29 @@ server <- function(input, output, session) {
     
   })
   
+  # Analytics Page
+  # Analytics for attendance
+  output$overall_attendance_plot <- renderPlot({
+    student_data$data %>% left_join(courses_data$data, by = c("course_id" = "id")) %>% group_by(course, week_no) %>% 
+      summarise(att = mean(res)) %>% 
+      ggplot(aes(x = factor(week_no), y = att, color = course, group = course)) + geom_line() + geom_point() +
+      theme_bw() + scale_colour_viridis_d() + theme(plot.title = element_text(hjust = 0.5)) +
+      labs(x = "Week", y = "Attendance Ratio", title = "Attendnace Ratio per Week Across Courses")
+  })
+  
+  # Analytics for claims
+  output$overall_claims_plot <- renderPlot({
+    claims_data$data %>% left_join(courses_data$data, by = c("course_id" = "id")) %>% 
+      mutate(earnings = as.numeric(difftime(
+        as.POSIXlt(time_out, format = "%H:%M"),
+        as.POSIXlt(time_in, format = "%H:%M"),
+        units = "hours"
+      )) * as.numeric(rate_ph))  %>%
+      ggplot(aes(x = course, y = earnings, fill = course, group = course)) + geom_boxplot() +
+      theme_bw() + scale_colour_viridis_d() + theme(plot.title = element_text(hjust = 0.5)) +
+      labs(x = "Course", y = "Earnings", title = "Earnings Across Courses")
+  })
+  
   
   # Saves:
   # Observer for exporting to CSV

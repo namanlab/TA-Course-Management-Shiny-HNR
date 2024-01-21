@@ -76,6 +76,15 @@ course_page <- fluidPage(
   )
 )
 
+analytics_page <- fluidPage(fluidRow(
+  h3("Attendance Analytics"),
+  plotOutput("overall_attendance_plot")
+),
+fluidRow(
+  h3("Claims Analytics"),
+  plotOutput("overall_claims_plot")
+))
+
 ui <- fluidPage(
   shinyjs::useShinyjs(),
   theme = shinytheme("simplex"),
@@ -84,6 +93,7 @@ ui <- fluidPage(
              "TA Course Managment Platform",
              tabPanel("Home Page" , icon = icon("home"), home_page),
              tabPanel("Modify Classes", icon = icon("pen-to-square"), add_class_page),
+             tabPanel("Analytics", icon = icon("line-chart"), analytics_page),
              tabPanel("Course Details", icon = icon("info-circle"), course_page),
              tabPanel("Save", icon = icon("download"), actionButton("export_button", "Export to CSV"))
   )

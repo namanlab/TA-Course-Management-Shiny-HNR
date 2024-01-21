@@ -58,7 +58,7 @@ attendance_df <- rbind(
 claims_df <- data.frame(
   course_id = rep(1:5, each = 9),
   date = sample(seq(as.Date('2024/01/01'), as.Date('2024/05/01'), by="day"), 45),
-  time_in = rep(format(as.POSIXct(c("10:00:00", "09:30:00", "11:15:00"), format = "%T"), format = "%H:%M"), 15),
+  time_in = rep(format(as.POSIXct(c("10:00:00", "09:30:00", "11:15:00", "09:45:00", "08:30:00"), format = "%T"), format = "%H:%M"), 9),
   time_out = rep(format(as.POSIXct(c("11:00:00", "10:45:00", "12:30:00"), format = "%T"), format = "%H:%M"), 15),
   task = rep(c("Teaching", "Meeting", "Grading"), each = 15),
   rate_ph = rep(40, each = 45)
