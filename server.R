@@ -578,8 +578,9 @@ server <- function(input, output, session) {
       # Calculate the difference in hours and create a new column 'hours'
       temp_df$hours <- as.numeric(difftime(as.POSIXlt(temp_df$time_out, format = "%H:%M"), as.POSIXlt(temp_df$time_in, format = "%H:%M"), units = "hours"))
       # Calculate the week number based on the date
-      temp_df$week_no <- as.integer(format(temp_df$date, "%V"))
-      ggplot(temp_df, aes(x = factor(week_no), y = hours)) +
+      temp_df$iso_week <- week(temp_df$date)
+      temp_df$iso_week <- as.integer(temp_df$iso_week)
+      ggplot(temp_df, aes(x = factor(iso_week), y = hours)) +
         geom_bar(stat = "identity") +
         labs(title = "Claims Analytics",
              x = "Week Number",
