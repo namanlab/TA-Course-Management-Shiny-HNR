@@ -1,6 +1,6 @@
 # TA-Course-Management-Shiny-HNR
 
-This Shiny app is designed to provide a platform for managing student attendance, claims, and analytics for courses, specificlaly designed for TAs at NUS. It allows easy tracking of student data, attendance records, and claims information.
+This Shiny app is designed to provide a platform for managing student attendance, claims, and analytics for courses, specifically designed for TAs at NUS. It allows easy tracking of student data, attendance records, and claims information.
 
 ## Project Structure
 
