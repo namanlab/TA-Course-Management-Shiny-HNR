@@ -1,0 +1,6 @@
+"course","slot","type","day","st_time","en_time","id","tele_link","gdrive_link"
+"CS2040","1D","Lab","Friday","16:00","18:00",1,"https://web.telegram.org/","https://drive.google.com/drive/my-drive"
+"IT1244","05","Tut","Tuesday","09:00","10:00",2,"https://web.telegram.org/","https://drive.google.com/drive/my-drive"
+"DSA2101","05","Tut","Friday","10:00","11:00",3,"https://web.telegram.org/","https://drive.google.com/drive/my-drive"
+"DSA2101","06","Tut","Friday","11:00","12:00",4,"https://web.telegram.org/","https://drive.google.com/drive/my-drive"
+"NM2207","01","Lec","Tuesday","18:00","21:00",5,"https://web.telegram.org/","https://drive.google.com/drive/my-drive"

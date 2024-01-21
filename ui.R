@@ -84,7 +84,8 @@ ui <- fluidPage(
              "TA Course Managment Platform",
              tabPanel("Home Page" , icon = icon("home"), home_page),
              tabPanel("Modify Classes", icon = icon("pen-to-square"), add_class_page),
-             tabPanel("Course Details", icon = icon("info-circle"), course_page)
-  ),
+             tabPanel("Course Details", icon = icon("info-circle"), course_page),
+             tabPanel("Save", icon = icon("download"), actionButton("export_button", "Export to CSV"))
+  )
   
 )

@@ -172,31 +172,35 @@ server <- function(input, output, session) {
   
   # CARD LAYOUT
   output$cards <- renderUI({
-    args <- lapply(1:nrow(courses_data$data), function(.x) {
-      course_name <- courses_data$data[.x, "course"]
-      course_id <- courses_data$data[.x, "id"]
-      div(
-        card("fa fa-book",
-             .course_name = courses_data$data[.x, "course"], 
-             .course_slot = courses_data$data[.x, "slot"], 
-             .course_type = courses_data$data[.x, "type"], 
-             .course_day = courses_data$data[.x, "day"], 
-             .course_st_time = courses_data$data[.x, "st_time"], 
-             .course_en_time = courses_data$data[.x, "en_time"]),
-        href = paste0("#", str_replace_all(course_id, " ", "")),
-        style = "cursor:pointer; text-decoration: none; color: inherit;",
-        id = paste0("card_", str_replace_all(course_id, " ", ""))
-      )
-    })
-    
-    args$cellArgs <- list(
-      style = "
+    if (nrow(courses_data$data) > 0) {
+      args <- lapply(1:nrow(courses_data$data), function(.x) {
+        course_name <- courses_data$data[.x, "course"]
+        course_id <- courses_data$data[.x, "id"]
+        div(
+          card("fa fa-book",
+               .course_name = courses_data$data[.x, "course"], 
+               .course_slot = courses_data$data[.x, "slot"], 
+               .course_type = courses_data$data[.x, "type"], 
+               .course_day = courses_data$data[.x, "day"], 
+               .course_st_time = courses_data$data[.x, "st_time"], 
+               .course_en_time = courses_data$data[.x, "en_time"]),
+          href = paste0("#", str_replace_all(course_id, " ", "")),
+          style = "cursor:pointer; text-decoration: none; color: inherit;",
+          id = paste0("card_", str_replace_all(course_id, " ", ""))
+        )
+      })
+      
+      args$cellArgs <- list(
+        style = "
         width: auto;
         height: auto;
         margin: 5px;
         ")
-    do.call(shiny::flowLayout, args)
-    
+      do.call(shiny::flowLayout, args)
+    } else {
+      # Display a message if there are no courses
+      div("No courses available.")
+    }
   })
   update_select_card <- function(course_id){
     cur_course_name <- courses_data$data[courses_data$data$id == course_id, "course"]
@@ -621,6 +625,29 @@ server <- function(input, output, session) {
       }
     })
     
+  })
+  
+  
+  # Saves:
+  # Observer for exporting to CSV
+  observeEvent(input$export_button, {
+    # Specify the directory and file name for saving the CSV file
+    if (!dir.exists("data")) {
+      dir.create("data")
+    }
+    write.csv(courses_data$data, file = "data/courses_df.csv", row.names = FALSE)
+    write.csv(todo_data$data, file = "data/todo_df.csv", row.names = FALSE)
+    write.csv(student_data$data, file = "data/attendance_df.csv", row.names = FALSE)
+    write.csv(claims_data$data, file = "data/claims_df.csv", row.names = FALSE)
+    
+    # Optionally, display a confirmation message
+    showModal(
+      modalDialog(
+        title = "Export Successful",
+        "All data has been successfully exported to CSV.",
+        easyClose = TRUE
+      )
+    )
   })
   
   

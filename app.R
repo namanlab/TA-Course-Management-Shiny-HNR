@@ -1,6 +1,10 @@
 source("packages.R")
+courses_df <- read.csv("data/courses_df.csv")
+todo_df <- read.csv("data/todo_df.csv")
+attendance_df <- read.csv("data/attendance_df.csv")
+claims_df <- read.csv("data/claims_df.csv")
 source("helper.R")
-source("data.R")
 source("ui.R")
 source("server.R")
+
 shinyApp(ui, server)

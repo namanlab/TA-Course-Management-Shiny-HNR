@@ -11,7 +11,9 @@ This Shiny app is designed to provide a platform for managing student attendance
 - `server.R`: Server logic for the Shiny app.
 - `README.md`: Documentation file.
 - `data.R`: File for data preprocessing and generation.
-- `www/`: Directory for storing static files like images or stylesheets.
+- `dummy_data.R`: File for dummy data preprocessing and generation.
+- `images/`: Directory for storing images for this RMD.
+- `dir/` Directory for storing data containing 4 csv files (Data section) which gets updated with the platform.
 
 ## Getting Started
 
@@ -21,6 +23,7 @@ To run the Shiny app locally, make sure you have R and RStudio installed. Open t
 # Install required packages
 install.packages(c("shiny", "shinythemes", "shinyWidgets", "shinyTime", "DT", "tidyverse", "stringr", "lubridate", "shinydashboard", "shinyjs", "plotly", "ggplot2", "shinyFiles"))
 
+# Run data.R script to create empty data frames (otherwise will be filled with dummy data)
 
 # Run the app
 shiny::runApp()
@@ -71,6 +74,7 @@ Elevate your insights game with analytics that not only unravel attendance patte
 
 ## Data
 
+All data is maintained locally in the data folder. It s importnt to click on save data button to svae all changes made to the data.
 - `courses_df`: Dataframe containing information about different courses.
 - `attendance_df`: Dataframe for storing attendance records.
 - `claims_df`: Dataframe for managing claims information.
