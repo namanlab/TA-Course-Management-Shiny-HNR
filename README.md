@@ -28,11 +28,30 @@ shiny::runApp()
 
 ## Features
 
-- Student Management: Add, delete, and edit student information for each course.
-- Attendance Tracking: Take attendance for different weeks and mark students as present, absent, or other.
-- Claims Management: Manage claims for various tasks, including date, time, and task details.
-- Analytics: View analytics for attendance and claims, including visualizations using ggplot.
-- ask Management: Track tasks and deadlines for each course.
+### 1. Task Management
+Effortlessly stay on top of your course workload by tracking tasks and deadlines. Dive into the Home Page for a sleek overview of all your courses.
+![Task Management](images/home_page.png)
+
+### 2. Course Management
+Take control of your teaching assistant role with the power to add, delete, and finesse the details of the courses you're TA-ing.
+![Task Management](images/courses.png)
+
+### 3. Student Management
+Craft an organized academic realm by seamlessly adding, deleting, and refining student information for each course.
+![Student Management](images/student_list.png)
+
+### 4. Attendance Tracking
+Take attendance for different weeks and mark students as present, absent, or other.
+![Attendance Tracking](images/attendance.png)
+
+### 5. Claims Management
+Harness the potential of a structured workflow by managing claims for various tasks, complete with date, time, and task details.
+![Claims Management](images/claims.png)
+
+### 6. Analytics
+Elevate your insights game with analytics that not only unravel attendance patterns and claims but also present them in captivating visualizations powered by ggplot.
+![Analytics](images/analytics.png)
+
 
 ## Required Packages
 
